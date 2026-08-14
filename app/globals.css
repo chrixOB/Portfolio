@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #07111f;
+    --panel: #102235;
+    --text: #f3f7fb;
+    --muted: #9fb0c0;
+    --accent: #5eead4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-[#f3f7fb];
+    background-color: #07111f;
+  }
+
+  a {
+    @apply text-inherit;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-full font-semibold inline-block;
+  }
+
+  .btn-primary {
+    @apply bg-[#5eead4] text-[#03212a];
+  }
+
+  .btn-secondary {
+    @apply border border-[#4b6478];
+  }
+}
