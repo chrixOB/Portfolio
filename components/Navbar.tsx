@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaBars, FaGithub, FaLinkedin, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,20 +17,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 border-b border-[#27435a] ${
         isScrolled ? 'bg-[#102235]/80 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
         {/* Logo / Home */}
-        <Link href="#home" className="text-[#5eead4] font-bold text-xl hover:opacity-80 transition">
+        <Link href="#home" onClick={closeMenu} className="text-[#5eead4] font-bold text-xl hover:opacity-80 transition">
           Portfolio
         </Link>
 
         {/* Center Navigation Links */}
-        <div className="flex gap-8 items-center">
+        <div className="hidden md:flex gap-8 items-center">
           <Link href="#home" className="text-[#9fb0c0] hover:text-[#f3f7fb] transition">
             Home
           </Link>
@@ -42,7 +46,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Social Links */}
-        <div className="flex gap-4">
+        <div className="hidden md:flex gap-4">
           <a 
             href="https://github.com/chrixob"
             target="_blank"
@@ -66,6 +70,37 @@ export default function Navbar() {
             LinkedIn
           
           </a>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="md:hidden text-[#f3f7fb] p-2"
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+        </button>
+        </div>
+
+        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col gap-4 pt-4`}>
+          <Link href="#home" onClick={closeMenu} className="text-[#9fb0c0] hover:text-[#f3f7fb] transition">
+            Home
+          </Link>
+          <Link href="#about" onClick={closeMenu} className="text-[#9fb0c0] hover:text-[#f3f7fb] transition">
+            About
+          </Link>
+          <Link href="#projects" onClick={closeMenu} className="text-[#9fb0c0] hover:text-[#f3f7fb] transition">
+            Projects
+          </Link>
+          <div className="flex gap-4 pt-2 border-t border-[#27435a]">
+            <a href="https://github.com/chrixob" target="_blank" rel="noopener noreferrer" className="text-[#9fb0c0] hover:text-[#5eead4] transition flex items-center gap-1" aria-label="GitHub">
+              <FaGithub size={20} /> Github
+            </a>
+            <a href="https://www.linkedin.com/in/christian-anang-825b42388" target="_blank" rel="noopener noreferrer" className="text-[#9fb0c0] hover:text-[#5eead4] transition flex items-center gap-1" aria-label="LinkedIn">
+              <FaLinkedin size={20} /> LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </nav>

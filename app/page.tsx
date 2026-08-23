@@ -6,8 +6,8 @@ const highlights = ['Frontend Development', 'React & Next.js', 'UI/UX Focus'];
 
 const projects = [
   {
-    title: 'Business Landing Page',
-    description: 'A polished landing page built for a modern brand.',
+    title: 'EggXellence',
+    description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
   },
   {
     title: 'Dashboard Interface',
@@ -46,19 +46,15 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="bg-[#102235] rounded-2xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-4 text-[#f3f7fb]">About</h2>
-        <p className="text-[#9fb0c0] mb-6 leading-relaxed">
-          I am a web developer passionate about combining clean code with thoughtful design.
-          My focus is on building responsive interfaces that feel smooth and professional.
-        </p>
-        <ul className="space-y-2">
-          {highlights.map((item) => (
-            <li key={item} className="text-[#5eead4] flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#5eead4] rounded-full"></span>
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="md:w-1/2">
+            <h2 className="text-3xl font-bold mb-4 text-[#f3f7fb]">About</h2>
+            <p className="text-[#9fb0c0] text-lg leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus, nulla gravida orci a odio, andecenas porttitor.
+            </p>
+          </div>
+          <div className="md:w-1/2" aria-hidden="true"></div>
+        </div>
       </section>
 
       {/* Projects Section */}
