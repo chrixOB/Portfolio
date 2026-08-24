@@ -10,12 +10,12 @@ const projects = [
     description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
   },
   {
-    title: 'Dashboard Interface',
+    title: 'Adei Foundation website',
     description: 'A clean analytics dashboard with a strong visual hierarchy.',
   },
   {
-    title: 'Portfolio Redesign',
-    description: 'A personal portfolio with a minimal and professional layout.',
+    title: 'PyGuide',
+    description: 'An interactive e-learning platform for learning python.',
   },
 ];
 
