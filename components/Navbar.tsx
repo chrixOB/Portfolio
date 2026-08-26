@@ -2,11 +2,20 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FaBars, FaGithub, FaLinkedin, FaTimes } from 'react-icons/fa';
+import { FaBars, FaGithub, FaLinkedin, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('portfolio-theme');
+    const shouldUseDarkMode = savedTheme !== 'light';
+
+    setIsDarkMode(shouldUseDarkMode);
+    document.documentElement.dataset.theme = shouldUseDarkMode ? 'dark' : 'light';
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +27,14 @@ export default function Navbar() {
   }, []);
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  const toggleTheme = () => {
+    const nextIsDarkMode = !isDarkMode;
+
+    setIsDarkMode(nextIsDarkMode);
+    document.documentElement.dataset.theme = nextIsDarkMode ? 'dark' : 'light';
+    window.localStorage.setItem('portfolio-theme', nextIsDarkMode ? 'dark' : 'light');
+  };
 
   return (
     <nav
@@ -71,6 +88,17 @@ export default function Navbar() {
           
           </a>
         </div>
+
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="theme-toggle"
+          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-pressed={!isDarkMode}
+        >
+          {isDarkMode ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
+        </button>
 
         <button
           type="button"

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
+import TechStack from '@/components/TechStack';
 
 const highlights = ['Frontend Development', 'React & Next.js', 'UI/UX Focus'];
 
@@ -9,21 +10,21 @@ const projects = [
   {
     title: 'EggXellence',
     description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
-    stack: 'Next.js',
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
     status: 'Completed',
     url: 'https://github.com/chrixob',
   },
   {
     title: 'Adei Foundation website',
     description: "A charity organization's website that showcases their projects, donations and other activities.",
-    stack: 'React',
+    stack: ['React', 'Tailwind CSS'],
     status: 'Completed',
     url: 'https://github.com/chrixob',
   },
   {
     title: 'PyGuide',
     description: 'An interactive e-learning platform for learning python.',
-    stack: 'Python',
+    stack: ['React', 'firebase', 'Tailwind CSS'],
     status: 'Ongoing',
     url: 'https://github.com/chrixob',
   },
@@ -67,6 +68,8 @@ export default function Home() {
         </div>
       </section>
 
+      <TechStack />
+
       {/* Projects Section */}
       <section id="projects" className="bg-[#102235] rounded-2xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 text-[#f3f7fb]">Projects</h2>
@@ -76,10 +79,15 @@ export default function Home() {
               key={project.title}
               className="flex min-h-56 flex-col border border-[#27435a] rounded-lg p-5 bg-[#0b1a2a] transition hover:-translate-y-1 hover:border-[#5eead4]"
             >
-              <div className="flex justify-end">
-                <span className="rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4]">
-                  {project.stack}
-                </span>
+              <div className="flex flex-wrap justify-end gap-2">
+                {project.stack.map((technology) => (
+                  <span
+                    key={technology}
+                    className="rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4]"
+                  >
+                    {technology}
+                  </span>
+                ))}
               </div>
               <h3 className="mt-5 text-lg font-semibold text-[#f3f7fb]">{project.title}</h3>
               <p className="mt-2 text-sm leading-6 text-[#9fb0c0]">{project.description}</p>
