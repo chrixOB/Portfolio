@@ -35,4 +35,328 @@
   .btn-secondary {
     @apply border border-[#4b6478];
   }
+
+  .social-link {
+    @apply flex h-10 w-10 items-center justify-center rounded-full border border-[#27435a] text-[#9fb0c0] transition-colors;
+  }
+
+  .social-link:hover {
+    @apply border-[#5eead4] text-[#5eead4];
+  }
+
+  .project-link {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 25%, rgba(94, 234, 212, 0.55), transparent 75%);
+    transform: translateX(-120%);
+    transition: transform 0.45s ease;
+  }
+
+  .project-link svg {
+    position: relative;
+    z-index: 1;
+    width: 1.35rem;
+    height: 1.35rem;
+    transform: rotate(-45deg);
+    transition: transform 0.25s ease;
+  }
+
+  .project-link:hover {
+    border-color: #5eead4;
+    background: #123b43;
+    box-shadow: 0 0 16px rgba(94, 234, 212, 0.35);
+  }
+
+  .project-link:hover::before {
+    transform: translateX(120%);
+  }
+
+  .project-link:hover svg {
+    transform: rotate(-45deg) scale(1.35);
+  }
+
+  .workstation {
+    position: relative;
+    width: 220px;
+    height: 155px;
+    flex: 0 0 auto;
+  }
+
+  .workstation-glow {
+    position: absolute;
+    inset: 42px 10px 0;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(94, 234, 212, 0.18), transparent 68%);
+  }
+
+  .workstation-monitor {
+    position: absolute;
+    z-index: 2;
+    top: 15px;
+    left: 76px;
+    width: 112px;
+    height: 76px;
+    border: 4px solid #34536a;
+    border-radius: 9px;
+    background: #0b1a2a;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 0 0 2px #152d42;
+  }
+
+  .workstation-camera {
+    position: absolute;
+    z-index: 2;
+    top: -8px;
+    left: 48px;
+    width: 10px;
+    height: 7px;
+    border-radius: 4px 4px 0 0;
+    background: #34536a;
+  }
+
+  .workstation-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 10px;
+    height: 100%;
+    background: linear-gradient(135deg, #0d2734, #103747);
+  }
+
+  .workstation-code-dots {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+
+  .workstation-code-dots i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e87852;
+  }
+
+  .workstation-code-dots i:nth-child(2) {
+    background: #f0b88b;
+  }
+
+  .workstation-code-dots i:nth-child(3) {
+    background: #5eead4;
+  }
+
+  .workstation-screen span {
+    display: block;
+    height: 4px;
+    border-radius: 4px;
+    background: #5eead4;
+    animation: screen-pulse 2.4s ease-in-out infinite;
+  }
+
+  .workstation-screen span:nth-child(2) {
+    width: 68%;
+    animation-delay: 0.3s;
+  }
+
+  .workstation-screen span:nth-child(3) {
+    width: 84%;
+    animation-delay: 0.6s;
+  }
+
+  .workstation-stand {
+    position: absolute;
+    bottom: -19px;
+    left: 46px;
+    width: 12px;
+    height: 18px;
+    background: #27435a;
+  }
+
+  .workstation-person {
+    position: absolute;
+    z-index: 3;
+    top: 38px;
+    left: 28px;
+    width: 74px;
+    height: 75px;
+    animation: person-bob 3.2s ease-in-out infinite;
+  }
+
+  .workstation-head {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f0b88b;
+    box-shadow: inset 5px 0 #d88c6e;
+  }
+
+  .workstation-head::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 28px;
+    height: 13px;
+    border-radius: 15px 15px 4px 4px;
+    background: #263b52;
+  }
+
+  .workstation-head i {
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #263b52;
+  }
+
+  .workstation-head i:first-child {
+    left: 9px;
+  }
+
+  .workstation-head i:last-child {
+    left: 19px;
+  }
+
+  .workstation-body {
+    position: absolute;
+    top: 25px;
+    left: 14px;
+    width: 52px;
+    height: 52px;
+    border-radius: 28px 28px 12px 12px;
+    background: #e87852;
+  }
+
+  .workstation-arm {
+    position: absolute;
+    z-index: 1;
+    top: 42px;
+    width: 42px;
+    height: 11px;
+    border-radius: 10px;
+    background: #f0b88b;
+    transform-origin: left center;
+  }
+
+  .workstation-arm-left {
+    left: 12px;
+    transform: rotate(24deg);
+  }
+
+  .workstation-arm-right {
+    left: 44px;
+    transform: rotate(158deg);
+    animation: typing 1.2s ease-in-out infinite;
+  }
+
+  .workstation-keyboard {
+    position: absolute;
+    z-index: 5;
+    top: 96px;
+    left: 111px;
+    width: 48px;
+    height: 8px;
+    border-radius: 2px 2px 5px 5px;
+    background: #8aa1b2;
+    transform: skewX(-22deg);
+    box-shadow: inset 0 3px #d4e0e6;
+  }
+
+  .workstation-mug {
+    position: absolute;
+    z-index: 5;
+    top: 91px;
+    left: 184px;
+    width: 15px;
+    height: 18px;
+    border-radius: 2px 2px 5px 5px;
+    background: #e87852;
+    box-shadow: inset 3px 0 rgba(255, 255, 255, 0.18);
+  }
+
+  .workstation-mug::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: -6px;
+    width: 7px;
+    height: 8px;
+    border: 2px solid #e87852;
+    border-left: 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .workstation-mug i {
+    position: absolute;
+    top: -9px;
+    left: 4px;
+    width: 2px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9fb0c0;
+    opacity: 0.65;
+    animation: steam 1.8s ease-in-out infinite;
+  }
+
+  .workstation-desk {
+    position: absolute;
+    z-index: 4;
+    bottom: 27px;
+    left: 8px;
+    width: 204px;
+    height: 9px;
+    border-radius: 5px;
+    background: #5eead4;
+    box-shadow: 0 4px #27435a;
+  }
+
+  .workstation-chair {
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    width: 65px;
+    height: 67px;
+    border: 8px solid #27435a;
+    border-bottom: 0;
+    border-radius: 28px 28px 0 0;
+  }
+
+  @keyframes person-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  @keyframes screen-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes typing {
+    0%, 100% { transform: rotate(158deg); }
+    50% { transform: rotate(166deg) translateY(2px); }
+  }
+
+  @keyframes steam {
+    0%, 100% { transform: translateY(2px); opacity: 0.2; }
+    50% { transform: translateY(-3px); opacity: 0.7; }
+  }
+
+  @media (max-width: 640px) {
+    .workstation {
+      align-self: center;
+      transform: scale(0.9);
+      transform-origin: right bottom;
+      margin-top: -10px;
+      margin-bottom: -10px;
+    }
+  }
 }

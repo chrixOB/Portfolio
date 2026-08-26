@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
@@ -8,14 +9,23 @@ const projects = [
   {
     title: 'EggXellence',
     description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
+    stack: 'Next.js',
+    status: 'Completed',
+    url: 'https://github.com/chrixob',
   },
   {
     title: 'Adei Foundation website',
-    description: 'A clean analytics dashboard with a strong visual hierarchy.',
+    description: "A charity organization's website that showcases their projects, donations and other activities.",
+    stack: 'React',
+    status: 'Completed',
+    url: 'https://github.com/chrixob',
   },
   {
     title: 'PyGuide',
     description: 'An interactive e-learning platform for learning python.',
+    stack: 'Python',
+    status: 'Ongoing',
+    url: 'https://github.com/chrixob',
   },
 ];
 
@@ -64,10 +74,36 @@ export default function Home() {
           {projects.map((project) => (
             <article
               key={project.title}
-              className="border border-[#27435a] rounded-lg p-4 bg-[#0b1a2a] hover:border-[#5eead4] transition"
+              className="flex min-h-56 flex-col border border-[#27435a] rounded-lg p-5 bg-[#0b1a2a] transition hover:-translate-y-1 hover:border-[#5eead4]"
             >
-              <h3 className="font-semibold text-lg mb-2 text-[#f3f7fb]">{project.title}</h3>
-              <p className="text-[#9fb0c0] text-sm">{project.description}</p>
+              <div className="flex justify-end">
+                <span className="rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4]">
+                  {project.stack}
+                </span>
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-[#f3f7fb]">{project.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#9fb0c0]">{project.description}</p>
+              <div className="mt-auto flex items-end justify-between pt-8">
+                <span
+                  className={`rounded border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
+                    project.status === 'Completed'
+                      ? 'border-[#2f8f6b] bg-[#123a32] text-[#6ee7b7]'
+                      : 'border-[#3972aa] bg-[#102d4a] text-[#7db8f2]'
+                  }`}
+                >
+                  {project.status}
+                </span>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`View ${project.title}`}
+                  title={`View ${project.title}`}
+                  className="project-link flex h-9 w-12 items-center justify-center rounded border border-[#34536a] text-[#5eead4] transition"
+                >
+                  <FaArrowRight className="project-arrow" aria-hidden="true" />
+                </a>
+              </div>
             </article>
           ))}
         </div>

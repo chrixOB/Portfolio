@@ -1,6 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 
 export const metadata: Metadata = {
   title: 'My Portfolio',
@@ -13,6 +15,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Navbar />
         {children}
+        <Footer />
+        <BackToTop />
       </body>
     </html>
   );
