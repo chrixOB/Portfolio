@@ -42,7 +42,7 @@ export default function Navbar() {
         isScrolled ? 'bg-[#102235]/80 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-5xl mx-auto px-4 py-4">
+      <div className="relative max-w-5xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
         {/* Logo / Home */}
         <Link href="#home" onClick={closeMenu} className="text-[#5eead4] font-bold text-xl hover:opacity-80 transition">
@@ -111,7 +111,7 @@ export default function Navbar() {
         </button>
         </div>
 
-        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col gap-4 pt-4`}>
+        <div className={`mobile-menu ${isMenuOpen ? 'flex' : 'hidden'} md:hidden flex-col gap-4`}>
           <Link href="#home" onClick={closeMenu} className="text-[#9fb0c0] hover:text-[#f3f7fb] transition">
             Home
           </Link>

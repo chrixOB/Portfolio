@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/chrixob', icon: FaGithub },
@@ -57,8 +57,16 @@ export default function Footer() {
                 <Icon aria-hidden="true" />
               </a>
             ))}
+            <a
+              href="mailto:chrisobodai40@gmail.com"
+              aria-label="Email"
+              title="Email"
+              className="social-link"
+            >
+              <FaEnvelope aria-hidden="true" />
+            </a>
           </div>
-          <p className="mt-8 text-xs text-[#708396]">
+          <p className="mt-8 text-md text-[#708396]">
             &copy; {new Date().getFullYear()} Christian Obodai Anang. All rights reserved.
           </p>
         </div>

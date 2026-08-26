@@ -107,8 +107,9 @@ export default function Home() {
                   rel="noreferrer"
                   aria-label={`View ${project.title}`}
                   title={`View ${project.title}`}
-                  className="project-link flex h-9 w-12 items-center justify-center rounded border border-[#34536a] text-[#5eead4] transition"
+                  className="project-link inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition"
                 >
+                  <span>View site</span>
                   <FaArrowRight className="project-arrow" aria-hidden="true" />
                 </a>
               </div>
