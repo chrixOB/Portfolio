@@ -146,6 +146,61 @@
     transform: rotate(-45deg) scale(1.35);
   }
 
+  .rubik-slogan {
+    perspective: 700px;
+  }
+
+  .rubik-stage {
+    position: relative;
+    display: inline-block;
+    width: 7.5em;
+    height: 1.2em;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    vertical-align: top;
+  }
+
+  .rubik-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: translateY(-115%) rotateX(35deg) scale(0.94);
+    transform-origin: center bottom;
+    animation: rubik-drop 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  .rubik-face-two { animation-delay: 3s; }
+  .rubik-face-three { animation-delay: 6s; }
+
+  @keyframes rubik-drop {
+    0%, 8% {
+      opacity: 0;
+      transform: translateY(-115%) rotateX(35deg) scale(0.94);
+    }
+    14%, 27% {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg) scale(1);
+    }
+    34%, 100% {
+      opacity: 0;
+      transform: translateY(115%) rotateX(-35deg) scale(0.94);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubik-face {
+      animation: none;
+    }
+
+    .rubik-face-one {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   .tech-stack-item {
     display: flex;
     align-items: center;
