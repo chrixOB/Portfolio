@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { FaCss3Alt, FaHtml5, FaJs, FaReact } from 'react-icons/fa';
-import { SiFirebase, SiNextdotjs, SiTailwindcss, SiTypescript } from 'react-icons/si';
+import { SiFirebase, SiGit, SiNextdotjs, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
 
 const technologies = [
   { name: 'HTML5', icon: FaHtml5, color: '#f97316' },
@@ -13,6 +13,8 @@ const technologies = [
   { name: 'Firebase', icon: SiFirebase, color: '#fbbf24' },
   { name: 'TypeScript', icon: SiTypescript, color: '#60a5fa' },
   { name: 'Next.js', icon: SiNextdotjs, color: '#f3f7fb' },
+  { name: 'Git', icon: SiGit, color: '#f05032' },
+  { name: 'Vercel', icon: SiVercel, color: '#f3f7fb' },
 ];
 
 export default function TechStack() {
