@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 
 export const metadata: Metadata = {
-  title: 'My Portfolio',
+  title: 'Obodai | Portfolio',
   description: 'A modern portfolio website built with Next.js',
 };
 

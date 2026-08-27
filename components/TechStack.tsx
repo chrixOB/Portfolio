@@ -52,7 +52,7 @@ export default function TechStack() {
             style={{
               '--tech-color': color,
               '--tech-delay': `${Math.floor(index / 2) * 600}ms`,
-            } as React.CSSProperties}
+              } as React.CSSProperties}
           >
             <Icon aria-hidden="true" />
             <span>{name}</span>

@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 border-b border-[#27435a] ${
-        isScrolled ? 'bg-[#102235]/80 backdrop-blur-md' : 'bg-transparent'
+        isScrolled ? 'bg-[#102235]/80 backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
       <div className="relative max-w-5xl mx-auto px-4 py-4">

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaLock } from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TechStack from '@/components/TechStack';
@@ -12,20 +12,23 @@ const projects = [
     description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
     stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
     status: 'Completed',
+    hosted: true,
     url: 'https://github.com/chrixob',
   },
   {
     title: 'Adei Foundation website',
     description: "A charity organization's website that showcases their projects, donations and other activities.",
-    stack: ['React', 'Tailwind CSS'],
+    stack: ['React', 'Material UI'],
     status: 'Completed',
-    url: 'https://github.com/chrixob',
+    hosted: true,
+    url: 'https://adeipurityfoundation1.netlify.app/',
   },
   {
     title: 'PyGuide',
     description: 'An interactive e-learning platform for learning python.',
-    stack: ['React', 'firebase', 'Tailwind CSS'],
+    stack: ['React', 'firebase'],
     status: 'Ongoing',
+    hosted: false,
     url: 'https://github.com/chrixob',
   },
 ];
@@ -49,7 +52,7 @@ export default function Home() {
             View work
           </Link>
         </div>
-        <div className="flex gap-16 mt-12">
+        <div className="flex gap-16 mt-12 font-semibold text-[#f3f7fb]">
           <AnimatedCounter target={4} label="Years experience" />
           <AnimatedCounter target={7} label="Projects completed" />
         </div>
@@ -101,17 +104,28 @@ export default function Home() {
                 >
                   {project.status}
                 </span>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`View ${project.title}`}
-                  title={`View ${project.title}`}
-                  className="project-link inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition"
-                >
-                  <span>View site</span>
-                  <FaArrowRight className="project-arrow" aria-hidden="true" />
-                </a>
+                {project.hosted ? (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View ${project.title}`}
+                    title={`View ${project.title}`}
+                    className="project-link inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition"
+                  >
+                    <span>View site</span>
+                    <FaArrowRight className="project-arrow" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span
+                    aria-label="PyGuide is not hosted yet"
+                    title="Not hosted yet"
+                    className="inline-flex cursor-not-allowed items-center gap-2 rounded border border-[#4a5966] bg-[#1b2732] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#81909d]"
+                  >
+                    <FaLock aria-hidden="true" />
+                    <span>Not hosted yet</span>
+                  </span>
+                )}
               </div>
             </article>
           ))}
