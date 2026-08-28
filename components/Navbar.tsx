@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
         {/* Logo / Home */}
         <Link href="#home" onClick={closeMenu} className="text-[#5eead4] font-bold text-xl hover:opacity-80 transition">
-          Portfolio
+          Hello, World !
         </Link>
 
         {/* Center Navigation Links */}
