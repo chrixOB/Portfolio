@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaBars, FaGithub, FaLinkedin, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 
+const brandText = 'Hello, World !'.split('');
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,8 +47,24 @@ export default function Navbar() {
       <div className="relative max-w-5xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
         {/* Logo / Home */}
-        <Link href="#home" onClick={closeMenu} className="text-[#5eead4] font-bold text-xl hover:opacity-80 transition">
-          Hello, World !
+        <Link
+          href="#home"
+          onClick={closeMenu}
+          className="brand-logo-link text-[#5eead4] font-bold text-xl hover:opacity-80 transition"
+          aria-label="Home"
+        >
+          <span className="brand-wrap" aria-hidden="true">
+            <span className="brand-window" />
+            {brandText.map((character, index) => (
+              <span
+                key={`${character}-${index}`}
+                className={`brand-letter ${character === ' ' ? 'brand-space' : ''}`}
+                style={{ '--letter-index': index } as React.CSSProperties}
+              >
+                {character === ' ' ? '\u00A0' : character}
+              </span>
+            ))}
+          </span>
         </Link>
 
         {/* Center Navigation Links */}

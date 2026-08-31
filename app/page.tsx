@@ -3,6 +3,7 @@ import { FaArrowRight, FaLock } from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TechStack from '@/components/TechStack';
+import Workflow from '@/components/Workflow';
 
 const highlights = ['Frontend Development', 'React & Next.js', 'UI/UX Focus'];
 
@@ -46,7 +47,7 @@ export default function Home() {
         </p>
         <div className="flex gap-4 mt-8">
           <Link href="#contact" className="btn btn-primary">
-            Let&apos;s talk
+            Download resume
           </Link>
           <Link href="#projects" className="btn btn-secondary">
             View work
@@ -69,39 +70,7 @@ export default function Home() {
               I&apos;m a frontend-focused developer who enjoys turning ideas into responsive, accessible, and polished digital experiences. I care about clean interfaces, thoughtful user interactions, and writing maintainable code. I&apos;m also gradually learning backend development so I can grow into a well-rounded full-stack developer.
             </p>
           </div>
-          <div className="md:w-1/2">
-            <h3 className="text-2xl font-bold text-[#f3f7fb]">My workflow</h3>
-            <div className="mt-5 space-y-3">
-              <div className="flex items-center gap-4 rounded-lg border border-[#27435a] bg-[#0b1a2a] p-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">1</span>
-                <div>
-                  <h4 className="font-semibold text-[#f3f7fb]">Design</h4>
-                  <p className="mt-1 text-sm text-[#9fb0c0]">Design the application</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-lg border border-[#27435a] bg-[#0b1a2a] p-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">2</span>
-                <div>
-                  <h4 className="font-semibold text-[#f3f7fb]">Build</h4>
-                  <p className="mt-1 text-sm text-[#9fb0c0]">Build it with the right technologies</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-lg border border-[#27435a] bg-[#0b1a2a] p-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">3</span>
-                <div>
-                  <h4 className="font-semibold text-[#f3f7fb]">Test</h4>
-                  <p className="mt-1 text-sm text-[#9fb0c0]">Ensure everything works as required</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-lg border border-[#27435a] bg-[#0b1a2a] p-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">4</span>
-                <div>
-                  <h4 className="font-semibold text-[#f3f7fb]">Deploy</h4>
-                  <p className="mt-1 text-sm text-[#9fb0c0]">Ship a maintainable project to end users</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Workflow />
         </div>
       </section>
 
