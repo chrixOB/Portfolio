@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaArrowRight, FaLock } from 'react-icons/fa';
+import { FaArrowRight, FaDownload, FaLock } from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TechStack from '@/components/TechStack';
@@ -46,11 +46,20 @@ export default function Home() {
           I create fast, modern, and user-friendly websites that help businesses stand out.
         </p>
         <div className="flex gap-4 mt-8">
-          <Link href="#contact" className="btn btn-primary">
-            Download resume
+          <Link
+            href="#contact"
+            className="btn btn-primary inline-flex items-center gap-2 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(94,234,212,0.22)]"
+          >
+            <FaDownload aria-hidden="true" />
+            <span>Download resume</span>
           </Link>
-          <Link href="#projects" className="btn btn-secondary">
-            View work
+          <Link
+            href="#projects"
+            className="btn btn-secondary inline-flex items-center gap-2 transition duration-200 hover:-translate-y-0.5 hover:border-[#5eead4] hover:text-[#f3f7fb] hover:shadow-[0_0_18px_rgba(94,234,212,0.14)]"
+            aria-label="View projects section"
+          >
+            <span>View work</span>
+            <FaArrowRight aria-hidden="true" />
           </Link>
         </div>
         <div className="flex gap-16 mt-12 font-semibold text-[#f3f7fb]">
