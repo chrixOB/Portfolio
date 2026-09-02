@@ -1,5 +1,19 @@
+'use client';
+
 import Link from 'next/link';
-import { FaArrowRight, FaDownload, FaLock } from 'react-icons/fa';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import {
+  FaArrowRight,
+  FaCheckCircle,
+  FaDownload,
+  FaEnvelope,
+  FaExclamationCircle,
+  FaLock,
+  FaPaperPlane,
+  FaPenNib,
+  FaPhoneAlt,
+  FaUser,
+} from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TechStack from '@/components/TechStack';
@@ -34,7 +48,154 @@ const projects = [
   },
 ];
 
+const initialFormState = {
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: '',
+};
+
+type FormState = typeof initialFormState;
+type FormErrors = Partial<Record<keyof FormState, string>>;
+
+const validateField = (name: keyof FormState, value: string) => {
+  const trimmedValue = value.trim();
+
+  switch (name) {
+    case 'name':
+      if (!trimmedValue) return 'Please enter your name.';
+      if (trimmedValue.length < 2) return 'Name must be at least 2 characters long.';
+      return '';
+    case 'email':
+      if (!trimmedValue) return 'Please enter your email address.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) {
+        return 'Please enter a valid email address.';
+      }
+      return '';
+    case 'phone':
+      if (!trimmedValue) return 'Please enter your contact number.';
+      if (!/^\d{10}$/.test(trimmedValue)) {
+        return 'Phone number must be exactly 10 digits.';
+      }
+      return '';
+    case 'subject':
+      if (!trimmedValue) return 'Please enter a subject.';
+      if (trimmedValue.length < 5) return 'Subject should be at least 5 characters long.';
+      return '';
+    case 'message':
+      if (!trimmedValue) return 'Please enter your message.';
+      if (trimmedValue.length < 10) return 'Message should be at least 10 characters long.';
+      return '';
+    default:
+      return '';
+  }
+};
+
+const validateForm = (data: FormState) => {
+  const nextErrors: FormErrors = {};
+
+  (Object.keys(data) as Array<keyof FormState>).forEach((field) => {
+    const fieldError = validateField(field, data[field]);
+    if (fieldError) {
+      nextErrors[field] = fieldError;
+    }
+  });
+
+  return nextErrors;
+};
+
 export default function Home() {
+  const [formData, setFormData] = useState<FormState>(initialFormState);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({
+    type: 'idle',
+    message: '',
+  });
+
+  const isFormValid =
+    Object.values(formData).every((value) => value.trim() !== '') &&
+    Object.values(validateForm(formData)).every((message) => !message);
+
+  useEffect(() => {
+    if (status.type !== 'success') return;
+
+    const timer = window.setTimeout(() => {
+      setStatus({ type: 'idle', message: '' });
+    }, 7000);
+
+    return () => window.clearTimeout(timer);
+  }, [status.type]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    const fieldName = name as keyof FormState;
+
+    const nextValue = fieldName === 'phone' ? value.replace(/\D/g, '').slice(0, 10) : value;
+
+    const nextData = {
+      ...formData,
+      [fieldName]: nextValue,
+    };
+
+    setFormData(nextData);
+    setErrors((current) => ({
+      ...current,
+      [fieldName]: validateField(fieldName, nextValue),
+    }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const validationErrors = validateForm(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setStatus({ type: 'error', message: 'Please correct the highlighted fields before sending your message.' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus({ type: 'idle', message: '' });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/chrisobodai40@gmail.com', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Your message has been sent successfully. I will get back to you soon.',
+      });
+      setFormData(initialFormState);
+      setErrors({});
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Something went wrong while sending your message. Please email me directly at chrisobodai40@gmail.com.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="max-w-5xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
       {/* Hero Section */}
@@ -146,17 +307,176 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="bg-[#102235] rounded-2xl p-8">
-        <h2 className="text-3xl font-bold mb-6 text-[#f3f7fb]">Contact</h2>
-        <div className="space-y-3 text-[#9fb0c0]">
-          <p>
-            Email: <span className="text-[#f3f7fb]">chrisobodai40@gmail.com</span>
-          </p>
-          <p>
-            GitHub: <span className="text-[#f3f7fb]">github.com/chrixob</span>
-          </p>
-          <p>
-            LinkedIn: <span className="text-[#f3f7fb]">www.linkedin.com/in/christian-anang-825b42388</span>
-          </p>
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-[#f3f7fb]">Contact</h2>
+          <p className="mt-2 text-[#9fb0c0]">Let&apos;s build something great together.</p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr]">
+          <div className="space-y-4 text-[#9fb0c0]">
+            <p>
+              Email: <span className="text-[#f3f7fb]">chrisobodai40@gmail.com</span>
+            </p>
+            <p>
+              GitHub: <span className="text-[#f3f7fb]">github.com/chrixob</span>
+            </p>
+            <p>
+              LinkedIn: <span className="text-[#f3f7fb]">www.linkedin.com/in/christian-anang-825b42388</span>
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-[#27435a] bg-[#091827] p-5">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block text-sm text-[#c7d6e4]">
+                <span className="mb-2 block">Name</span>
+                <div className="relative">
+                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#5eead4]">
+                    <FaUser aria-hidden="true" />
+                  </span>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    aria-invalid={Boolean(errors.name)}
+                    className={`w-full rounded-xl border bg-[#0b1a2a] px-3 py-2.5 pl-10 text-[#f3f7fb] outline-none transition placeholder:text-[#708396] ${
+                      errors.name ? 'border-red-400 focus:border-red-400' : 'border-[#34536a] focus:border-[#5eead4]'
+                    }`}
+                  />
+                </div>
+                {errors.name && (
+                  <p className="mt-1 flex items-center gap-1 text-xs text-[#fda4af]">
+                    <FaExclamationCircle aria-hidden="true" />
+                    {errors.name}
+                  </p>
+                )}
+              </label>
+
+              <label className="block text-sm text-[#c7d6e4]">
+                <span className="mb-2 block">Contact Number</span>
+                <div className="relative">
+                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#5eead4]">
+                    <FaPhoneAlt aria-hidden="true" />
+                  </span>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Your phone number"
+                    aria-invalid={Boolean(errors.phone)}
+                    className={`w-full rounded-xl border bg-[#0b1a2a] px-3 py-2.5 pl-10 text-[#f3f7fb] outline-none transition placeholder:text-[#708396] ${
+                      errors.phone ? 'border-red-400 focus:border-red-400' : 'border-[#34536a] focus:border-[#5eead4]'
+                    }`}
+                  />
+                </div>
+                {errors.phone && (
+                  <p className="mt-1 flex items-center gap-1 text-xs text-[#fda4af]">
+                    <FaExclamationCircle aria-hidden="true" />
+                    {errors.phone}
+                  </p>
+                )}
+              </label>
+            </div>
+
+            <label className="block text-sm text-[#c7d6e4]">
+              <span className="mb-2 block">Email Address</span>
+              <div className="relative">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#5eead4]">
+                  <FaEnvelope aria-hidden="true" />
+                </span>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  aria-invalid={Boolean(errors.email)}
+                  className={`w-full rounded-xl border bg-[#0b1a2a] px-3 py-2.5 pl-10 text-[#f3f7fb] outline-none transition placeholder:text-[#708396] ${
+                    errors.email ? 'border-red-400 focus:border-red-400' : 'border-[#34536a] focus:border-[#5eead4]'
+                  }`}
+                />
+              </div>
+              {errors.email && (
+                <p className="mt-1 flex items-center gap-1 text-xs text-[#fda4af]">
+                  <FaExclamationCircle aria-hidden="true" />
+                  {errors.email}
+                </p>
+              )}
+            </label>
+
+            <label className="block text-sm text-[#c7d6e4]">
+              <span className="mb-2 block">Subject</span>
+              <div className="relative">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#5eead4]">
+                  <FaPenNib aria-hidden="true" />
+                </span>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Project inquiry"
+                  aria-invalid={Boolean(errors.subject)}
+                  className={`w-full rounded-xl border bg-[#0b1a2a] px-3 py-2.5 pl-10 text-[#f3f7fb] outline-none transition placeholder:text-[#708396] ${
+                    errors.subject ? 'border-red-400 focus:border-red-400' : 'border-[#34536a] focus:border-[#5eead4]'
+                  }`}
+                />
+              </div>
+              {errors.subject && (
+                <p className="mt-1 flex items-center gap-1 text-xs text-[#fda4af]">
+                  <FaExclamationCircle aria-hidden="true" />
+                  {errors.subject}
+                </p>
+              )}
+            </label>
+
+            <label className="block text-sm text-[#c7d6e4]">
+              <span className="mb-2 block">Message</span>
+              <div className="relative">
+                <span className="pointer-events-none absolute left-3 top-3 text-[#5eead4]">
+                  <FaPaperPlane aria-hidden="true" />
+                </span>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project..."
+                  rows={5}
+                  aria-invalid={Boolean(errors.message)}
+                  className={`w-full resize-none rounded-xl border bg-[#0b1a2a] px-3 py-2.5 pl-10 text-[#f3f7fb] outline-none transition placeholder:text-[#708396] ${
+                    errors.message ? 'border-red-400 focus:border-red-400' : 'border-[#34536a] focus:border-[#5eead4]'
+                  }`}
+                />
+              </div>
+              {errors.message && (
+                <p className="mt-1 flex items-center gap-1 text-xs text-[#fda4af]">
+                  <FaExclamationCircle aria-hidden="true" />
+                  {errors.message}
+                </p>
+              )}
+            </label>
+
+            {status.message ? (
+              <p
+                className={`flex items-center gap-2 text-sm ${
+                  status.type === 'success' ? 'text-[#6ee7b7]' : 'text-[#fda4af]'
+                }`}
+              >
+                {status.type === 'success' ? <FaCheckCircle aria-hidden="true" /> : <FaExclamationCircle aria-hidden="true" />}
+                {status.message}
+              </p>
+            ) : null}
+
+            <button
+              type="submit"
+              disabled={!isFormValid || isSubmitting}
+              className="btn btn-primary w-full justify-center disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isSubmitting ? 'Sending...' : 'Send message'}
+            </button>
+          </form>
         </div>
       </section>
     </main>
