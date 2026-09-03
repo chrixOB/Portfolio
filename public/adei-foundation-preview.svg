@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#f5f8fb"/>
+  <rect width="900" height="68" fill="#ffffff"/>
+  <text x="34" y="43" fill="#172b3d" font-family="Arial, sans-serif" font-size="22" font-weight="700">Adei Foundation</text>
+  <text x="680" y="41" fill="#526b7d" font-family="Arial, sans-serif" font-size="15">About   Projects   Give</text>
+  <rect x="28" y="100" width="844" height="174" rx="14" fill="#dff7f2"/>
+  <text x="58" y="153" fill="#1a665c" font-family="Arial, sans-serif" font-size="17">Creating room to thrive</text>
+  <text x="58" y="205" fill="#172b3d" font-family="Arial, sans-serif" font-size="34" font-weight="700">Small actions, lasting change.</text>
+  <rect x="58" y="228" width="124" height="28" rx="14" fill="#1a665c"/>
+  <text x="79" y="248" fill="#ffffff" font-family="Arial, sans-serif" font-size="13">Support our work</text>
+  <text x="34" y="322" fill="#172b3d" font-family="Arial, sans-serif" font-size="20" font-weight="700">Our projects</text>
+  <rect x="28" y="350" width="264" height="116" rx="10" fill="#ffffff" stroke="#c8d7e0"/>
+  <rect x="318" y="350" width="264" height="116" rx="10" fill="#ffffff" stroke="#c8d7e0"/>
+  <rect x="608" y="350" width="264" height="116" rx="10" fill="#ffffff" stroke="#c8d7e0"/>
+  <rect x="48" y="372" width="52" height="52" rx="8" fill="#facc15"/><rect x="338" y="372" width="52" height="52" rx="8" fill="#7db8f2"/><rect x="628" y="372" width="52" height="52" rx="8" fill="#6ee7b7"/>
+  <rect x="120" y="378" width="132" height="12" rx="6" fill="#9fb0c0"/><rect x="120" y="402" width="92" height="10" rx="5" fill="#c8d7e0"/>
+  <rect x="410" y="378" width="132" height="12" rx="6" fill="#9fb0c0"/><rect x="410" y="402" width="92" height="10" rx="5" fill="#c8d7e0"/>
+  <rect x="700" y="378" width="132" height="12" rx="6" fill="#9fb0c0"/><rect x="700" y="402" width="92" height="10" rx="5" fill="#c8d7e0"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#07111f"/>
+  <rect x="0" y="0" width="210" height="520" fill="#102235"/>
+  <text x="30" y="48" fill="#5eead4" font-family="Arial, sans-serif" font-size="24" font-weight="700">PyGuide</text>
+  <text x="30" y="106" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="15">Course library</text>
+  <rect x="28" y="132" width="154" height="36" rx="8" fill="#123b43"/><text x="46" y="155" fill="#6ee7b7" font-family="Arial, sans-serif" font-size="14">Python basics</text>
+  <text x="46" y="204" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="14">Data structures</text>
+  <text x="46" y="246" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="14">Build a project</text>
+  <text x="254" y="62" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="25" font-weight="700">Welcome back, learner</text>
+  <text x="254" y="94" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="15">Continue your Python journey</text>
+  <rect x="254" y="128" width="590" height="104" rx="12" fill="#102235"/>
+  <text x="282" y="166" fill="#5eead4" font-family="Arial, sans-serif" font-size="16">Current lesson</text>
+  <text x="282" y="201" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="22" font-weight="700">Loops and iteration</text>
+  <rect x="254" y="264" width="280" height="180" rx="12" fill="#102235"/><rect x="558" y="264" width="286" height="180" rx="12" fill="#102235"/>
+  <text x="280" y="304" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="15">Progress</text>
+  <circle cx="350" cy="370" r="48" fill="none" stroke="#27435a" stroke-width="12"/><path d="M350 322 A48 48 0 1 1 313 400" fill="none" stroke="#5eead4" stroke-width="12"/>
+  <text x="334" y="378" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="22" font-weight="700">68%</text>
+  <text x="584" y="304" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="15">Next challenge</text>
+  <rect x="584" y="334" width="218" height="14" rx="7" fill="#34536a"/><rect x="584" y="366" width="172" height="14" rx="7" fill="#34536a"/><rect x="584" y="398" width="128" height="14" rx="7" fill="#5eead4"/>
+</svg>

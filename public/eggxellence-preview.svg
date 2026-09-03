@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#091827"/>
+  <rect width="900" height="64" fill="#102235"/>
+  <circle cx="34" cy="32" r="10" fill="#5eead4"/>
+  <text x="58" y="39" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="22" font-weight="700">EggXellence</text>
+  <rect x="28" y="98" width="844" height="92" rx="12" fill="#123a32"/>
+  <text x="52" y="132" fill="#6ee7b7" font-family="Arial, sans-serif" font-size="18">Farm overview</text>
+  <text x="52" y="166" fill="#f3f7fb" font-family="Arial, sans-serif" font-size="30" font-weight="700">12,480 healthy birds</text>
+  <rect x="28" y="220" width="266" height="220" rx="12" fill="#102235"/>
+  <rect x="316" y="220" width="266" height="220" rx="12" fill="#102235"/>
+  <rect x="604" y="220" width="268" height="220" rx="12" fill="#102235"/>
+  <text x="52" y="260" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="16">Egg production</text>
+  <path d="M52 392 C100 330 128 360 164 306 S226 328 270 278" fill="none" stroke="#5eead4" stroke-width="8"/>
+  <text x="340" y="260" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="16">Feed inventory</text>
+  <rect x="340" y="300" width="184" height="20" rx="10" fill="#27435a"/><rect x="340" y="300" width="132" height="20" rx="10" fill="#facc15"/>
+  <text x="628" y="260" fill="#9fb0c0" font-family="Arial, sans-serif" font-size="16">Recent activity</text>
+  <circle cx="640" cy="310" r="7" fill="#6ee7b7"/><rect x="658" y="302" width="154" height="14" rx="7" fill="#34536a"/>
+  <circle cx="640" cy="350" r="7" fill="#7db8f2"/><rect x="658" y="342" width="126" height="14" rx="7" fill="#34536a"/>
+</svg>

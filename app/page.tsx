@@ -24,6 +24,7 @@ const highlights = ['Frontend Development', 'React & Next.js', 'UI/UX Focus'];
 const projects = [
   {
     title: 'EggXellence',
+    image: '/eggxellence-preview.svg',
     description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
     stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
     status: 'Completed',
@@ -32,6 +33,7 @@ const projects = [
   },
   {
     title: 'Adei Foundation website',
+    image: '/adei-foundation-preview.svg',
     description: "A charity organization's website that showcases their projects, donations and other activities.",
     stack: ['React', 'Material UI'],
     status: 'Completed',
@@ -40,6 +42,7 @@ const projects = [
   },
   {
     title: 'PyGuide',
+    image: '/pyguide-preview.svg',
     description: 'An interactive e-learning platform for learning python.',
     stack: ['React', 'firebase'],
     status: 'Ongoing',
@@ -266,6 +269,11 @@ export default function Home() {
                 ))}
               </div>
               <h3 className="mt-5 text-lg font-semibold text-[#f3f7fb]">{project.title}</h3>
+              <img
+                src={project.image}
+                alt={`${project.title} user interface preview`}
+                className="mt-4 aspect-[16/9] w-full rounded-lg border border-[#27435a] object-cover"
+              />
               <p className="mt-2 text-sm leading-6 text-[#9fb0c0]">{project.description}</p>
               <div className="mt-auto flex items-end justify-between pt-8">
                 <span
@@ -312,20 +320,8 @@ export default function Home() {
           <p className="mt-2 text-[#9fb0c0]">Let&apos;s build something great together.</p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr]">
-          <div className="space-y-4 text-[#9fb0c0]">
-            <p>
-              Email: <span className="text-[#f3f7fb]">chrisobodai40@gmail.com</span>
-            </p>
-            <p>
-              GitHub: <span className="text-[#f3f7fb]">github.com/chrixob</span>
-            </p>
-            <p>
-              LinkedIn: <span className="text-[#f3f7fb]">www.linkedin.com/in/christian-anang-825b42388</span>
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-[#27435a] bg-[#091827] p-5">
+        <div className="flex flex-col items-center gap-8">
+          <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-4 rounded-2xl border border-[#27435a] bg-[#091827] p-5">
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block text-sm text-[#c7d6e4]">
                 <span className="mb-2 block">Name</span>
@@ -477,6 +473,18 @@ export default function Home() {
               {isSubmitting ? 'Sending...' : 'Send message'}
             </button>
           </form>
+
+          <div className="flex w-full max-w-2xl flex-col items-center gap-3 border-t border-[#27435a] pt-6 text-center text-[#9fb0c0] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-3">
+            <a href="mailto:chrisobodai40@gmail.com" className="transition-colors hover:text-[#5eead4]">
+              Email: <span className="text-[#f3f7fb]">chrisobodai40@gmail.com</span>
+            </a>
+            <a href="https://github.com/chrixob" target="_blank" rel="noreferrer" className="transition-colors hover:text-[#5eead4]">
+              GitHub: <span className="text-[#f3f7fb]">github.com/chrixob</span>
+            </a>
+            <a href="https://www.linkedin.com/in/christian-anang-825b42388" target="_blank" rel="noreferrer" className="transition-colors hover:text-[#5eead4]">
+              LinkedIn: <span className="text-[#f3f7fb]">www.linkedin.com/in/christian-anang-825b42388</span>
+            </a>
+          </div>
         </div>
       </section>
     </main>
