@@ -18,6 +18,7 @@ import AnimatedSlogan from '@/components/AnimatedSlogan';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import TechStack from '@/components/TechStack';
 import Workflow from '@/components/Workflow';
+import DeveloperPortrait from '@/components/DeveloperPortrait';
 
 const highlights = ['Frontend Development', 'React & Next.js', 'UI/UX Focus'];
 
@@ -202,34 +203,37 @@ export default function Home() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
       {/* Hero Section */}
-      <section id="home" className="py-16 sm:py-20">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#f3f7fb]">Christian obodai Anang</h2>
-        <p className="uppercase tracking-widest text-[#5eead4] text-sm font-semibold mt-2">Web Developer</p>
-        <AnimatedSlogan />
-        <p className="text-[#9fb0c0] mt-4 text-lg max-w-2xl">
-          I create fast, modern, and user-friendly websites that help businesses stand out.
-        </p>
-        <div className="flex gap-4 mt-8">
-          <Link
-            href="#contact"
-            className="btn btn-primary inline-flex items-center gap-2 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(94,234,212,0.22)]"
-          >
-            <FaDownload aria-hidden="true" />
-            <span>Download resume</span>
-          </Link>
-          <Link
-            href="#projects"
-            className="btn btn-secondary inline-flex items-center gap-2 transition duration-200 hover:-translate-y-0.5 hover:border-[#5eead4] hover:text-[#f3f7fb] hover:shadow-[0_0_18px_rgba(94,234,212,0.14)]"
-            aria-label="View projects section"
-          >
-            <span>View work</span>
-            <FaArrowRight aria-hidden="true" />
-          </Link>
+      <section id="home" className="hero-section py-16 sm:py-20">
+        <div className="hero-copy">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#f3f7fb]">Christian obodai Anang</h2>
+          <p className="uppercase tracking-widest text-[#5eead4] text-sm font-semibold mt-2">Web Developer</p>
+          <AnimatedSlogan />
+          <p className="text-[#9fb0c0] mt-4 text-lg max-w-2xl">
+            I create fast, modern, and user-friendly websites that help businesses stand out.
+          </p>
+          <div className="flex gap-4 mt-8">
+            <Link
+              href="#contact"
+              className="btn btn-primary inline-flex items-center gap-2 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(94,234,212,0.22)]"
+            >
+              <FaDownload aria-hidden="true" />
+              <span>Download resume</span>
+            </Link>
+            <Link
+              href="#projects"
+              className="btn btn-secondary inline-flex items-center gap-2 transition duration-200 hover:-translate-y-0.5 hover:border-[#5eead4] hover:text-[#f3f7fb] hover:shadow-[0_0_18px_rgba(94,234,212,0.14)]"
+              aria-label="View projects section"
+            >
+              <span>View work</span>
+              <FaArrowRight aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="flex gap-16 mt-12 font-semibold text-[#f3f7fb]">
+            <AnimatedCounter target={4} label="Years experience" />
+            <AnimatedCounter target={7} label="Projects completed" />
+          </div>
         </div>
-        <div className="flex gap-16 mt-12 font-semibold text-[#f3f7fb]">
-          <AnimatedCounter target={4} label="Years experience" />
-          <AnimatedCounter target={7} label="Projects completed" />
-        </div>
+        <DeveloperPortrait />
       </section>
 
       {/* About Section */}

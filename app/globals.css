@@ -36,6 +36,88 @@
     @apply border border-[#4b6478];
   }
 
+  .hero-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .portrait-scene {
+    position: relative;
+    isolation: isolate;
+    min-height: 430px;
+    display: grid;
+    place-items: center;
+  }
+
+  .portrait-frame {
+    position: relative;
+    width: min(100%, 350px);
+    overflow: hidden;
+    border: 1px solid #27435a;
+    border-radius: 1.75rem 1.75rem 0.5rem 0.5rem;
+    background: #4d5754;
+    box-shadow: 18px 18px 0 rgba(39, 67, 90, 0.22);
+  }
+
+  .portrait-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .portrait-status {
+    position: absolute;
+    right: 0.85rem;
+    bottom: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.65rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(7, 17, 31, 0.78);
+    color: #f3f7fb;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+
+  .portrait-status i {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: #5eead4;
+    box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.14);
+  }
+
+  .portrait-code {
+    position: absolute;
+    z-index: -1;
+    color: #5eead4;
+    font-family: monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    opacity: 0.82;
+    animation: portrait-drift 4.5s ease-in-out infinite;
+  }
+
+  .portrait-code-one { top: 7%; left: 2%; }
+  .portrait-code-two { top: 28%; right: 2%; animation-delay: -1.2s; }
+  .portrait-code-three { bottom: 13%; left: 7%; animation-delay: -2.6s; }
+  .portrait-code-four { bottom: 4%; right: 10%; animation-delay: -3.4s; }
+  .portrait-code-five { top: 49%; left: 0; animation-delay: -4.1s; }
+
+  @keyframes portrait-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+    50% { transform: translate3d(0.35rem, -0.7rem, 0) rotate(4deg); }
+  }
+
   .social-link {
     @apply flex h-10 w-10 items-center justify-center rounded-full border border-[#27435a] text-[#9fb0c0] transition-colors;
   }
@@ -323,7 +405,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .rubik-face,
-    .workflow-step {
+    .workflow-step,
+    .portrait-code {
       animation: none;
     }
 
@@ -662,6 +745,22 @@
   }
 
   @media (max-width: 640px) {
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .portrait-scene {
+      min-height: 360px;
+      margin-top: 1.5rem;
+    }
+
+    .portrait-frame {
+      width: min(100%, 300px);
+    }
+
     .workstation {
       align-self: center;
       transform: scale(0.9);
