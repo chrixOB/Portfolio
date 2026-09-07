@@ -25,7 +25,7 @@ const highlights = ['Frontend Development', 'React & Next.js', 'UI/UX Focus'];
 const projects = [
   {
     title: 'EggXellence',
-    image: '/eggxellence-preview.svg',
+    image: '/eggxellence_2.JPG',
     description: 'An all-in-one platform for poultry farmers to manage their operations efficiently.',
     stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
     status: 'Completed',
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     title: 'Adei Foundation website',
-    image: '/adei-foundation-preview.svg',
+    image: '/adei_2.JPG',
     description: "A charity organization's website that showcases their projects, donations and other activities.",
     stack: ['React', 'Material UI'],
     status: 'Completed',
@@ -201,7 +201,7 @@ export default function Home() {
   };
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
+    <main className="mx-auto max-w-6xl px-3 py-10 sm:px-5 sm:py-12 lg:px-6">
       {/* Hero Section */}
       <section id="home" className="hero-section py-16 sm:py-20">
         <div className="hero-copy">
@@ -233,7 +233,8 @@ export default function Home() {
             <AnimatedCounter target={7} label="Projects completed" />
           </div>
         </div>
-        <DeveloperPortrait />
+        {/* <DeveloperPortrait /> */}
+        <img src="/Myself.jpg" alt="Developer Portrait" className="mx-auto mt-8 rounded-full border-4 border-[#5eead4] shadow-lg" />
       </section>
 
       {/* About Section */}
@@ -254,13 +255,13 @@ export default function Home() {
       <TechStack />
 
       {/* Projects Section */}
-      <section id="projects" className="bg-[#102235] rounded-2xl p-8 mb-8">
+      <section id="projects" className="bg-[#102235] rounded-2xl p-6 sm:p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 text-[#f3f7fb]">Projects</h2>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="flex min-h-56 flex-col border border-[#27435a] rounded-lg p-5 bg-[#0b1a2a] transition hover:-translate-y-1 hover:border-[#5eead4]"
+              className="group flex min-h-[28rem] flex-col rounded-xl border border-[#27435a] bg-[#0b1a2a] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#5eead4] hover:shadow-[0_0_24px_rgba(94,234,212,0.12)] sm:p-5"
             >
               <div className="flex flex-wrap justify-end gap-2">
                 {project.stack.map((technology) => (
@@ -272,14 +273,20 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-[#f3f7fb]">{project.title}</h3>
-              <img
-                src={project.image}
-                alt={`${project.title} user interface preview`}
-                className="mt-4 aspect-[16/9] w-full rounded-lg border border-[#27435a] object-cover"
-              />
-              <p className="mt-2 text-sm leading-6 text-[#9fb0c0]">{project.description}</p>
-              <div className="mt-auto flex items-end justify-between pt-8">
+
+              <h3 className="mt-4 text-lg font-semibold text-[#f3f7fb]">{project.title}</h3>
+
+              <div className="mt-4 overflow-hidden rounded-lg border border-[#27435a] bg-[#091827]">
+                <img
+                  src={project.image}
+                  alt={`${project.title} user interface preview`}
+                  className="aspect-[16/9] w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                />
+              </div>
+
+              <p className="mt-4 text-sm leading-6 text-[#9fb0c0]">{project.description}</p>
+
+              <div className="mt-auto flex items-end justify-between gap-3 pt-6">
                 <span
                   className={`rounded border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
                     project.status === 'Completed'
@@ -296,7 +303,7 @@ export default function Home() {
                     rel="noreferrer"
                     aria-label={`View ${project.title}`}
                     title={`View ${project.title}`}
-                    className="project-link inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition"
+                    className="project-link inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition hover:border-[#5eead4]"
                   >
                     <span>View site</span>
                     <FaArrowRight className="project-arrow" aria-hidden="true" />

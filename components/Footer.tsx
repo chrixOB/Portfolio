@@ -3,7 +3,7 @@ import { FaEnvelope, FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/chrixob', icon: FaGithub },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/christian-anang-825b42388', icon: FaLinkedinIn },
-  { label: 'WhatsApp', href: 'https://wa.me/?text=Hello%20Christian', icon: FaWhatsapp },
+  { label: 'WhatsApp', href: 'https://wa.link/afg5nx', icon: FaWhatsapp },
 ];
 
 function WorkstationIllustration() {
