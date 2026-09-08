@@ -5,15 +5,19 @@ import { useEffect, useState } from 'react';
 interface CounterProps {
   target: number;
   label: string;
+  onComplete?: () => void;
 }
 
-export default function AnimatedCounter({ target, label }: CounterProps) {
+export default function AnimatedCounter({ target, label, onComplete }: CounterProps) {
   const [count, setCount] = useState(0);
   const [isFaded, setIsFaded] = useState(false);
 
   useEffect(() => {
-    // Fade in first
-    setIsFaded(true);
+    const timer = window.setTimeout(() => {
+      setIsFaded(true);
+    }, 500);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -26,6 +30,7 @@ export default function AnimatedCounter({ target, label }: CounterProps) {
       current += increment;
       if (current >= target) {
         setCount(target);
+        onComplete?.();
         clearInterval(interval);
       } else {
         setCount(Math.floor(current));

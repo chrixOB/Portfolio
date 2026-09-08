@@ -12,6 +12,8 @@ import {
   FaPaperPlane,
   FaPenNib,
   FaPhoneAlt,
+  FaReact,
+  FaRocket,
   FaUser,
 } from 'react-icons/fa';
 import AnimatedSlogan from '@/components/AnimatedSlogan';
@@ -113,6 +115,7 @@ export default function Home() {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [completedCounters, setCompletedCounters] = useState(0);
   const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({
     type: 'idle',
     message: '',
@@ -229,12 +232,28 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex gap-16 mt-12 font-semibold text-[#f3f7fb]">
-            <AnimatedCounter target={4} label="Years experience" />
-            <AnimatedCounter target={7} label="Projects completed" />
+            <AnimatedCounter target={4} label="Years experience" onComplete={() => setCompletedCounters((count) => count + 1)} />
+            <AnimatedCounter target={7} label="Projects completed" onComplete={() => setCompletedCounters((count) => count + 1)} />
           </div>
         </div>
         {/* <DeveloperPortrait /> */}
-        <img src="/Myself.jpg" alt="Developer Portrait" className="mx-auto mt-8 rounded-full border-4 border-[#5eead4] shadow-lg" />
+        <div className={`hero-portrait-stage mx-auto mt-8 ${completedCounters === 2 ? 'counters-ready' : ''}`} aria-label="Developer portrait with programming symbols" role="img">
+          <span className="hero-float hero-float-git" aria-hidden="true">git add .</span>
+          <span className="hero-float hero-float-next" aria-hidden="true">nextClient()</span>
+          <span className="hero-float hero-float-js" aria-hidden="true">&lt;/&gt;</span>
+          <span className="hero-float hero-float-braces" aria-hidden="true">&#123; &#125;</span>
+          <span className="hero-float hero-float-ts" aria-hidden="true">TS</span>
+          <FaReact className="hero-float hero-float-react" aria-hidden="true" />
+          <span className="hero-float-rocket" aria-hidden="true">
+            <span className="hero-rocket-exhaust" />
+            <span className="hero-rocket-smoke hero-rocket-smoke-one" />
+            <span className="hero-rocket-smoke hero-rocket-smoke-two" />
+            <FaRocket />
+          </span>
+          <div className="hero-portrait">
+            <img src="/Myself.jpg" alt="Developer Portrait" />
+          </div>
+        </div>
       </section>
 
       {/* About Section */}
