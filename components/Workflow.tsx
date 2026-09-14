@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const workflowSteps = [
+  { title: 'Define', description: 'Understand client needs and user requirements' },
   { title: 'Design', description: 'Design the application' },
   { title: 'Build', description: 'Build it with the right technologies' },
   { title: 'Test', description: 'Ensure everything works as required' },
