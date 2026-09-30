@@ -209,7 +209,7 @@ export default function Home() {
       <section id="home" className="hero-section py-16 sm:py-20">
         <div className="hero-copy">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#f3f7fb]">Christian obodai Anang</h2>
-          <p className="uppercase tracking-widest text-[#5eead4] text-sm font-semibold mt-2">Web Developer</p>
+          <p className="font-code uppercase tracking-widest text-[#5eead4] text-xs font-semibold mt-2">Web Developer</p>
           <AnimatedSlogan />
           <p className="text-[#9fb0c0] mt-4 text-lg max-w-2xl">
             I create fast, modern, and user-friendly websites that help businesses stand out.
@@ -286,7 +286,7 @@ export default function Home() {
                 {project.stack.map((technology) => (
                   <span
                     key={technology}
-                    className="rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4]"
+                    className="font-code rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4]"
                   >
                     {technology}
                   </span>
@@ -307,7 +307,7 @@ export default function Home() {
 
               <div className="mt-auto flex items-end justify-between gap-3 pt-6">
                 <span
-                  className={`rounded border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
+                  className={`font-code rounded border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
                     project.status === 'Completed'
                       ? 'border-[#2f8f6b] bg-[#123a32] text-[#6ee7b7]'
                       : 'border-[#3972aa] bg-[#102d4a] text-[#7db8f2]'
@@ -322,7 +322,7 @@ export default function Home() {
                     rel="noreferrer"
                     aria-label={`View ${project.title}`}
                     title={`View ${project.title}`}
-                    className="project-link inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition hover:border-[#5eead4]"
+                    className="project-link font-code inline-flex items-center gap-2 rounded border border-[#34536a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#5eead4] transition hover:border-[#5eead4]"
                   >
                     <span>View site</span>
                     <FaArrowRight className="project-arrow" aria-hidden="true" />
@@ -331,7 +331,7 @@ export default function Home() {
                   <span
                     aria-label="PyGuide is not hosted yet"
                     title="Not hosted yet"
-                    className="inline-flex cursor-not-allowed items-center gap-2 rounded border border-[#4a5966] bg-[#1b2732] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#81909d]"
+                    className="font-code inline-flex cursor-not-allowed items-center gap-2 rounded border border-[#4a5966] bg-[#1b2732] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#81909d]"
                   >
                     <FaLock aria-hidden="true" />
                     <span>Not hosted yet</span>

@@ -46,8 +46,8 @@ export default function AnimatedCounter({ target, label, onComplete }: CounterPr
         isFaded ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <p className="text-3xl sm:text-4xl font-bold text-[#5eead4]">{count}+</p>
-      <p className="text-[#9fb0c0] text-sm mt-1">{label}</p>
+      <p className="font-display text-3xl sm:text-4xl font-bold text-[#5eead4]">{count}+</p>
+      <p className="font-code text-[#9fb0c0] text-xs uppercase tracking-wider mt-1">{label}</p>
     </div>
   );
 }

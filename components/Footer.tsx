@@ -39,7 +39,7 @@ export default function Footer() {
     <footer className="border-t border-[#1d354a] bg-[#091827] px-4 py-10 sm:px-6">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 sm:flex-row sm:items-end sm:justify-between">
         <div className="text-center sm:text-left">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5eead4]">Let&apos;s build something</p>
+          <p className="font-code text-xs font-semibold uppercase tracking-[0.2em] text-[#5eead4]">Let&apos;s build something</p>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-[#9fb0c0] sm:mx-0">
             Available for thoughtful digital projects and collaborative work.
           </p>

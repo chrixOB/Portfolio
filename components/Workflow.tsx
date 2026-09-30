@@ -51,7 +51,7 @@ export default function Workflow() {
             className={`workflow-step flex items-center gap-4 rounded-lg border border-[#27435a] bg-[#0b1a2a] p-4 ${isVisible ? 'workflow-step-visible' : ''}`}
             style={{ '--workflow-delay': `${index * 400}ms` } as React.CSSProperties}
           >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">
+            <span className="font-code flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">
               {index}
             </span>
             <div>
