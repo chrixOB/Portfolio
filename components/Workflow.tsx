@@ -13,6 +13,7 @@ const workflowSteps = [
 export default function Workflow() {
   const workflowRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isBinary, setIsBinary] = useState(false);
 
   useEffect(() => {
     const workflow = workflowRef.current;
@@ -41,9 +42,26 @@ export default function Workflow() {
       <p className="mt-2 text-md text-[#9fb0c0]">
         I follow a structured workflow to ensure that every project I work on is well-designed, built with the right technologies, thoroughly tested, and deployed in a maintainable way.
       </p>
-      <p className="mt-4 text-sm font-medium italic text-[#5eead4]">
-        Don't mind the numbering, programmers start their count from zero
-      </p>
+      <div className="mt-4">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setIsBinary((current) => !current)}
+            aria-pressed={isBinary}
+            className="rounded-md border border-[#5eead4] px-3 py-2 text-sm font-semibold text-[#5eead4] transition hover:bg-[#123b43] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5eead4]"
+          >
+            click me, find out
+          </button>
+          <span aria-live="polite" className="font-code inline-flex items-center gap-2 rounded-full border border-[#34536a] px-3 py-1.5 text-xs uppercase tracking-wider text-[#9fb0c0]">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#5eead4]" />
+            <span>Display: <strong className="text-[#f3f7fb]">{isBinary ? 'Binary' : 'Integer'}</strong></span>
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#5eead4]" />
+          </span>
+        </div>
+        <p className="mt-2 text-sm font-medium italic text-[#5eead4]">
+          Don&apos;t worry about the numbering, programmers begin their count from zero
+        </p>
+      </div>
       <div className="mt-5 space-y-3">
         {workflowSteps.map(({ title, description }, index) => (
           <div
@@ -52,7 +70,7 @@ export default function Workflow() {
             style={{ '--workflow-delay': `${index * 400}ms` } as React.CSSProperties}
           >
             <span className="font-code flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">
-              {index}
+              {isBinary ? index.toString(2) : index}
             </span>
             <div>
               <h4 className="font-semibold text-[#f3f7fb]">{title}</h4>
