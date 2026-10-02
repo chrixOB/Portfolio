@@ -69,8 +69,12 @@ export default function Workflow() {
             className={`workflow-step flex items-center gap-4 rounded-lg border border-[#27435a] bg-[#0b1a2a] p-4 ${isVisible ? 'workflow-step-visible' : ''}`}
             style={{ '--workflow-delay': `${index * 400}ms` } as React.CSSProperties}
           >
-            <span className="font-code flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">
-              {isBinary ? index.toString(2) : index}
+            <span className="workflow-number-flip font-code flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#5eead4] font-bold text-[#03212a]">
+              <span className={`workflow-number-flip-inner ${isBinary ? 'is-binary' : ''}`} aria-hidden="true">
+                <span className="workflow-number-face">{index}</span>
+                <span className="workflow-number-face workflow-number-binary">{index.toString(2)}</span>
+              </span>
+              <span className="sr-only">{isBinary ? index.toString(2) : index}</span>
             </span>
             <div>
               <h4 className="font-semibold text-[#f3f7fb]">{title}</h4>

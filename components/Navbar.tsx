@@ -52,7 +52,17 @@ export default function Navbar() {
           aria-label="Home"
         >
           <span className="brand-shell" aria-hidden="true">
-            <span className="brand-final">Hello, World !</span>
+            <span
+              className="brand-final"
+              onAnimationEnd={(event) => {
+                if (event.animationName !== 'brand-final-reveal') return;
+
+                document.documentElement.dataset.brandAnimationComplete = 'true';
+                window.dispatchEvent(new Event('brand-animation-complete'));
+              }}
+            >
+              Hello, World !
+            </span>
             <span className="brand-wing brand-wing-left" />
             <span className="brand-wing brand-wing-right" />
           </span>

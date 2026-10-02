@@ -116,6 +116,7 @@ export default function Home() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completedCounters, setCompletedCounters] = useState(0);
+  const [greetingAnimationComplete, setGreetingAnimationComplete] = useState(false);
   const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({
     type: 'idle',
     message: '',
@@ -134,6 +135,30 @@ export default function Home() {
 
     return () => window.clearTimeout(timer);
   }, [status.type]);
+
+  useEffect(() => {
+    const startCounters = () => setGreetingAnimationComplete(true);
+
+    if (document.documentElement.dataset.brandAnimationComplete === 'true') {
+      startCounters();
+      return;
+    }
+
+    const greeting = document.querySelector('.brand-final');
+    const revealAnimation = greeting
+      ?.getAnimations()
+      .find((animation) =>
+        'animationName' in animation && animation.animationName === 'brand-final-reveal'
+      );
+
+    if (revealAnimation) {
+      revealAnimation.finished.then(startCounters, startCounters);
+      return;
+    }
+
+    window.addEventListener('brand-animation-complete', startCounters);
+    return () => window.removeEventListener('brand-animation-complete', startCounters);
+  }, []);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -232,8 +257,8 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex gap-16 mt-12 font-semibold text-[#f3f7fb]">
-            <AnimatedCounter target={4} label="Years experience" onComplete={() => setCompletedCounters((count) => count + 1)} />
-            <AnimatedCounter target={7} label="Projects completed" onComplete={() => setCompletedCounters((count) => count + 1)} />
+            <AnimatedCounter target={4} label="Years experience" start={greetingAnimationComplete} onComplete={() => setCompletedCounters((count) => count + 1)} />
+            <AnimatedCounter target={7} label="Projects completed" start={greetingAnimationComplete} onComplete={() => setCompletedCounters((count) => count + 1)} />
           </div>
         </div>
         {/* <DeveloperPortrait /> */}
